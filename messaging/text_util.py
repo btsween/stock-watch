@@ -6,11 +6,10 @@ class TextUtil:
         self.text_creds = config_util.data_map['text_util']
         self.client = Client(self.text_creds['account_sid'], self.text_creds['auth_token'])
 
-    def send_text(self, stock):
-        text_body = "Check out " + stock
+    def send_text(self, message):
         message = self.client.messages \
             .create(
-                 body = text_body,
+                 body = message,
                  messaging_service_sid = self.text_creds['messaging_service_sid'],
                  to = self.text_creds['text_to_number'],
                  from_ = self.text_creds['text_from_number']
@@ -19,7 +18,9 @@ class TextUtil:
     def send_text_list(self, stocks):
         if(len(stocks) == 0):
             return
+        text_body = ""
         for stock in stocks:
-            self.send_text(stock)
+            text_body = text_body + stock + "\n"
+        self.send_text(text_body)
 
 text_util = TextUtil()
