@@ -25,7 +25,7 @@ class FinanceUtil:
             close_price = stock_info['previousClose']
             if(moving_200_avg is None or price is None or close_price is None):
                 return False
-            elif(price / moving_200_avg < .5 and price / close_price < .9):
+            elif(price / moving_200_avg < .6 and price / close_price < .96):
                 return True
             else:
                 return False
@@ -33,4 +33,18 @@ class FinanceUtil:
             print("d'oh didnt work")
             return False
 
+    # def is_buy(self, stock):
+    #     print("trying for " + stock)
+    #     stock_info = yf.Ticker(stock).info
+    #     moving_200_avg = stock_info['twoHundredDayAverage']
+    #     price = stock_info['bid']
+    #     close_price = stock_info['previousClose']
+    #     if(moving_200_avg is None or price is None or close_price is None):
+    #         return False
+    #     elif(price / moving_200_avg < .5 and price / close_price < .9):
+    #         return True
+    #     else:
+    #         return False
+    #     print("d'oh didnt work")
+    #     return False
 finance_util = FinanceUtil()

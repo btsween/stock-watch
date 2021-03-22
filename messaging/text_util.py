@@ -3,16 +3,15 @@ from config.config_util import config_util
 
 class TextUtil:
     def __init__(self):
-        self.text_creds = config_util.data_map['text_util']
-        self.client = Client(self.text_creds['account_sid'], self.text_creds['auth_token'])
+        self.client = Client(config_util.config_map['account_sid'], config_util.config_map['auth_token'])
 
     def send_text(self, message):
         message = self.client.messages \
             .create(
                  body = message,
-                 messaging_service_sid = self.text_creds['messaging_service_sid'],
-                 to = self.text_creds['text_to_number'],
-                 from_ = self.text_creds['text_from_number']
+                 messaging_service_sid = config_util.config_map['messaging_service_sid'],
+                 to = config_util.config_map['text_to_number'],
+                 from_ = config_util.config_map['text_from_number']
              )
 
     def send_text_list(self, stocks):

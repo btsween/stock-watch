@@ -1,6 +1,0 @@
-text_util:
-  account_sid: ''
-  auth_token: ''
-  messaging_service_sid: ''
-  text_to_number: ''
-  text_from_number: ''
