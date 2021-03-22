@@ -12,7 +12,7 @@ class FinanceUtil:
     def find_deals(self):
         for stock in self.stock_list:
             if(self.is_buy(stock)):
-                self.buy_list.append(stock)
+                self.buy_list.append("$" + stock)
         return self.buy_list
 
     def is_buy(self, stock):
@@ -23,7 +23,7 @@ class FinanceUtil:
             close_price = stock_info['previousClose']
             if (moving_200_avg is None or price is None or close_price is None):
                 return False
-            elif (price / moving_200_avg < .95 and price / close_price < .96):
+            elif (price / moving_200_avg < .9 and price / close_price < .96):
                 return True
             else:
                 return False
