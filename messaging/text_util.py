@@ -17,7 +17,7 @@ class TextUtil:
     def send_text_list(self, stocks):
         if(len(stocks) == 0):
             return
-        text_body = ""
+        text_body = "STOCK-WATCH ALERT LIST:\n"
         for stock in stocks:
             text_body = text_body + stock + "\n"
         self.send_text(text_body)
